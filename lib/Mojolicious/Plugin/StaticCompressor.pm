@@ -212,7 +212,7 @@ sub _cleanup_old_files {
 			my $updated_at = (stat($path))[9];
 			if($config->{auto_cleanup_expires_sec} < ($now - $updated_at)){
 				warn "DELETE: $path";
-				#unlink($config->{path_cache_dir}) || die("Can't delete old file: $path");
+				unlink($config->{path_cache_dir}) || die("Can't delete old file: $path");
 			}
 		}
 	}, $config->{path_cache_dir});
